@@ -1,0 +1,135 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GrooveKit Studio</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <header class="top-header">
+      <div>
+        <p class="eyebrow">YOUR PERSONAL BEAT MAKER</p>
+        <h1>Groove<span>Kit</span> Studio</h1>
+        <p class="subtitle">Make a beat. Move a beat. Find your groove.</p>
+      </div>
+      <div class="header-badge">● AUDIO ENGINE READY</div>
+    </header>
+
+    <main>
+      <section class="transport panel">
+        <div class="transport-buttons">
+          <button id="record-button" class="button record-button">
+            <span class="record-dot"></span> Record
+          </button>
+          <button id="play-button" class="button primary-button">▶ Play</button>
+          <button id="stop-button" class="button">■ Stop</button>
+        </div>
+
+        <div class="transport-settings">
+          <label class="setting">
+            <span>Tempo</span>
+            <strong><span id="tempo-value">110</span> BPM</strong>
+            <input id="tempo" type="range" min="50" max="200" value="110">
+          </label>
+
+          <label class="setting">
+            <span>Loop length</span>
+            <select id="loop-length">
+              <option value="4">4 bars</option>
+              <option value="8" selected>8 bars</option>
+              <option value="16">16 bars</option>
+              <option value="32">32 bars</option>
+            </select>
+          </label>
+
+          <label class="setting">
+            <span>Master volume</span>
+            <strong><span id="master-value">80</span>%</strong>
+            <input id="master-volume" type="range" min="0" max="100" value="80">
+          </label>
+        </div>
+
+        <div class="transport-footer">
+          <span id="transport-status" class="status-text">Ready to make music</span>
+          <span id="position-display">Bar 1 · Beat 1</span>
+        </div>
+      </section>
+
+      <section class="editor panel">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">ARRANGEMENT</p>
+            <h2>Track Editor</h2>
+            <p class="helper-text">Drag any hit to change when it plays.</p>
+          </div>
+          <div class="edit-buttons">
+            <button id="undo-button" class="button small-button" disabled>↶ Undo</button>
+            <button id="redo-button" class="button small-button" disabled>↷ Redo</button>
+            <button id="clear-button" class="button small-button danger-button">Clear track</button>
+          </div>
+        </div>
+
+        <div class="editing-toolbar">
+          <label class="toolbar-setting">
+            <span>Selected track</span>
+            <select id="selected-track"></select>
+          </label>
+
+          <label class="toolbar-setting">
+            <span>Snap to grid</span>
+            <select id="snap-grid">
+              <option value="1">1/4 notes</option>
+              <option value="0.5" selected>1/8 notes</option>
+              <option value="0.25">1/16 notes</option>
+            </select>
+          </label>
+
+          <button id="quantize-button" class="button quantize-button">
+            ⊞ Quantize selected track
+          </button>
+        </div>
+
+        <p class="grid-help">
+          <strong>Tip:</strong> Select a track, choose a grid size, then drag its colored hits.
+          Quantize moves every hit on the selected track to the nearest grid line.
+        </p>
+
+        <div class="timeline-scroll" id="timeline-scroll">
+          <div class="timeline-content" id="timeline-content">
+            <div class="ruler-row">
+              <div class="track-label ruler-label">TRACK / MIXER</div>
+              <div class="ruler-lane" id="timeline-ruler"></div>
+            </div>
+            <div id="track-list" class="track-list"></div>
+            <div id="playhead" class="playhead"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="pads-section panel">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">LIVE PERFORMANCE</p>
+            <h2>Drum Pads</h2>
+            <p class="helper-text">Click a pad or press its keyboard key.</p>
+          </div>
+          <div class="keyboard-hint">KEYBOARD SHORTCUTS ENABLED</div>
+        </div>
+        <div id="drum-pads" class="drum-pads"></div>
+        <p class="recording-hint">
+          When Record is active, playing a pad records its hit onto that instrument's track.
+        </p>
+      </section>
+    </main>
+
+    <footer>
+      GrooveKit Studio · Your ideas, your rhythm.
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
